@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 
 public enum SearchData {
 
-    CUSTOMER("custormer", Customer.class);
+    CUSTOMER("customer", Customer.class);
 
     private final String typeName;
 
