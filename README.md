@@ -23,3 +23,4 @@ Récupération du projet:
 ~~~
 
 Déployer l'archive **war** dans un serveur d'application Jakarta EE.
+De préférence, Wildfly.
