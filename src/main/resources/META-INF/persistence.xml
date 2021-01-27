@@ -7,7 +7,7 @@
     
     <persistence-unit name="dyna-pu" transaction-type="JTA">       
               
-        <jta-data-source>java:jboss/datasources/DynaDS</jta-data-source>
+        <jta-data-source>java:app/jdbc/DynaDS</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <validation-mode>CALLBACK</validation-mode>
@@ -29,8 +29,9 @@
             <!-- Voir les requêtes SQL dans la console -->
             <!--
             -->
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
+            <property name="eclipselink.logging.level" value="FINE"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="TRUE"/>
         </properties>
         
     </persistence-unit>

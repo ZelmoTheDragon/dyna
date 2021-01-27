@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN" "https://raw.githubusercontent.com/payara/Payara-Server-Documentation/master/schemas/payara-resources_1_6.dtd">
+<!--
+    POUR DÉVELOPPEMENT UNIQUEMENT
+    
+    Fichier de déploiement spécifique au serveur d'application Payara 5.XXX.
+    Déclare les ressources du serveur.
+-->
+<resources>
+    
+    <jdbc-connection-pool
+        name="DynaH2Pool" 
+        res-type="javax.sql.DataSource"
+        datasource-classname="org.h2.jdbcx.JdbcDataSource">
+                       
+        <property name="user" value="sa"></property>
+        <property name="password" value="sa"></property>
+        <property name="url" value="jdbc:h2:mem:dyna;DB_CLOSE_DELAY=-1"></property>
+    </jdbc-connection-pool>  
+    
+    <jdbc-resource 
+        pool-name="DynaH2Pool" 
+        jndi-name="java:app/jdbc/DynaDS"
+        object-type="user" 
+        enabled="true">
+        
+    </jdbc-resource>
+        
+</resources>

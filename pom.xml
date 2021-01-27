@@ -69,6 +69,13 @@
             <version>${version.jakarta}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.microprofile</groupId>
+            <artifactId>microprofile</artifactId>
+            <version>${version.microprofile}</version>
+            <type>pom</type>
+            <scope>provided</scope>
+        </dependency>
         
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
