@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    EJB 3.2
+    
+    Fichier de configuration de EJB.
+    Ce fichier même vide est requis pour le fonctionnement nominal
+    de cette technologie.
+    La configuration est réalisée par les annotations.
+-->
+<ejb-jar 
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/ejb-jar_3_2.xsd" 
+    version = "3.2">
+     
+</ejb-jar>

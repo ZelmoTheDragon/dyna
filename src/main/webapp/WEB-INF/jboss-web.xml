@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    POUR DÉVELOPPEMENT OU INTÉGRATION UNIQUEMENT
+    
+    Fichier de déploiement spécifique au serveur d'application Wildfly >= 8.XXX.
+    Déclaration des ressources et configurations web du serveur.
+-->
+<jboss-web 
+    xmlns="http://www.jboss.com/xml/ns/javaee" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee http://www.jboss.org/schema/jbossas/jboss-web_8_0.xsd"
+    version="8.0">
+    
+    <!-- Chemin racine de l'application -->
+    <context-root>/dyna</context-root>
+    
+</jboss-web>

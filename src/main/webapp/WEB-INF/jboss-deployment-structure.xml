@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- JBoss module descriptor -->
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>        
+            <module name="javaee.api"/>
+            <module name="com.h2database.h2"/>
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>
