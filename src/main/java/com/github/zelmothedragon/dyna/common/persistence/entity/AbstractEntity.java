@@ -17,15 +17,15 @@ import javax.validation.constraints.NotNull;
 @JsonbPropertyOrder(PropertyOrderStrategy.LEXICOGRAPHICAL)
 @MappedSuperclass
 @Access(AccessType.FIELD)
-public abstract class AbstractEntity implements Identifiable<String>, Serializable {
+public abstract class AbstractEntity implements Identifiable<UUID>, Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @NotNull
     @JsonbProperty(value = "id", nillable = false)
     @Id
-    @Column(name = "id", nullable = false, unique = true, columnDefinition = "CHAR(36)", length = 36)
-    protected String id;
+    @Column(name = "id", nullable = false, unique = true, columnDefinition = "CHAR(36)")
+    protected UUID id;
 
     @NotNull
     @JsonbProperty(value = "version", nillable = false)
@@ -34,8 +34,7 @@ public abstract class AbstractEntity implements Identifiable<String>, Serializab
     protected Long version;
 
     protected AbstractEntity() {
-        // TODO: Utiliser le type UUID
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID();
         this.version = 0L;
     }
 
@@ -70,12 +69,12 @@ public abstract class AbstractEntity implements Identifiable<String>, Serializab
     }
 
     @Override
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
     @Override
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
