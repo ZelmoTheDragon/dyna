@@ -1,13 +1,10 @@
 package com.github.zelmothedragon.dyna.common.persistence.entity;
 
-import com.github.zelmothedragon.dyna.common.util.UUIDJsonMapping;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 import javax.json.bind.annotation.JsonbProperty;
 import javax.json.bind.annotation.JsonbPropertyOrder;
-import javax.json.bind.annotation.JsonbTypeDeserializer;
-import javax.json.bind.annotation.JsonbTypeSerializer;
 import javax.json.bind.config.PropertyOrderStrategy;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -20,26 +17,25 @@ import javax.validation.constraints.NotNull;
 @JsonbPropertyOrder(PropertyOrderStrategy.LEXICOGRAPHICAL)
 @MappedSuperclass
 @Access(AccessType.FIELD)
-public abstract class AbstractEntity implements Identifiable<UUID>, Serializable {
+public abstract class AbstractEntity implements Identifiable<String>, Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @NotNull
     @JsonbProperty(value = "id", nillable = false)
-    @JsonbTypeSerializer(UUIDJsonMapping.class)
-    @JsonbTypeDeserializer(UUIDJsonMapping.class)
-    @NotNull
     @Id
-    @Column(name = "id", nullable = false, unique = true, columnDefinition = "VARCHAR(36)")
-    protected UUID id;
+    @Column(name = "id", nullable = false, unique = true, columnDefinition = "CHAR(36)", length = 36)
+    protected String id;
 
-    @JsonbProperty(value = "version", nillable = false)
     @NotNull
+    @JsonbProperty(value = "version", nillable = false)
     @Version
     @Column(name = "version", nullable = false)
     protected Long version;
 
     protected AbstractEntity() {
-        this.id = UUID.randomUUID();
+        // TODO: Utiliser le type UUID
+        this.id = UUID.randomUUID().toString();
         this.version = 0L;
     }
 
@@ -74,12 +70,12 @@ public abstract class AbstractEntity implements Identifiable<UUID>, Serializable
     }
 
     @Override
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
     @Override
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,7 +1,7 @@
 -- ====================
 -- DATABASE SCRIPT
 -- H2 Database
--- 002 Init 
+-- Init 
 -- ====================
 
 INSERT INTO customer (id,version,gender,email,family_name,given_name,phone_number,rank,short_rank) VALUES (random_uuid(),0,'OTHER','dapibus.id.blandit@NuncmaurisMorbi.edu','Lawrence','Laith','01 89 83 47 96','Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum','adipiscing');
