@@ -43,7 +43,11 @@ public enum DynamicType {
         return Stream.of(values())
                 .filter(e -> Objects.equals(e.type, type))
                 .findFirst()
-                .orElse(BOOLEAN);
+                .orElse(STRING);
+    }
+
+    public static DynamicType getDefaultDynamicType() {
+        return STRING;
     }
 
     private static LocalDate parseLocalDate(final String text) {
