@@ -9,9 +9,12 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Dependent
 @JsonbPropertyOrder(PropertyOrderStrategy.LEXICOGRAPHICAL)
@@ -36,6 +39,27 @@ public class Customer extends AbstractEntity {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
+    @NotNull
+    @JsonbProperty(value = "gender", nillable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender", nullable = false)
+    private Gender gender;
+
+    @NotBlank
+    @JsonbProperty(value = "phoneNumber", nillable = false)
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
+
+    @NotBlank
+    @JsonbProperty(value = "rank", nillable = false)
+    @Column(name = "rank", nullable = false)
+    private String rank;
+
+    @NotBlank
+    @JsonbProperty(value = "shortRank", nillable = false)
+    @Column(name = "short_rank", nullable = false)
+    private String shortRank;
+
     public Customer() {
     }
 
@@ -52,6 +76,14 @@ public class Customer extends AbstractEntity {
         sb.append(familyName);
         sb.append(", email=");
         sb.append(email);
+        sb.append(", gender=");
+        sb.append(gender);
+        sb.append(", phoneNumber=");
+        sb.append(phoneNumber);
+        sb.append(", rank=");
+        sb.append(rank);
+        sb.append(", shortRank=");
+        sb.append(shortRank);
         sb.append('}');
         return sb.toString();
     }
@@ -78,6 +110,38 @@ public class Customer extends AbstractEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getRank() {
+        return rank;
+    }
+
+    public void setRank(String rank) {
+        this.rank = rank;
+    }
+
+    public String getShortRank() {
+        return shortRank;
+    }
+
+    public void setShortRank(String shortRank) {
+        this.shortRank = shortRank;
     }
 
 }
