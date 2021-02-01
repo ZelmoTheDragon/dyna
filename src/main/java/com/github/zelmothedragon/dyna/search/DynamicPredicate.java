@@ -100,7 +100,7 @@ public interface DynamicPredicate<Y extends Comparable<? super Y>> {
         var expression = cb.lower(path.as(String.class));
         var predicates = new ArrayList<Predicate>(data.size());
         for (var d : data) {
-            var value = "%" + unaccent(d.toString()) + "%";
+            var value = "%" + escape(d.toString()) + "%";
             var predicate = cb.like(expression, value);
             predicates.add(predicate);
         }
@@ -116,7 +116,7 @@ public interface DynamicPredicate<Y extends Comparable<? super Y>> {
         var expression = cb.lower(path.as(String.class));
         var predicates = new ArrayList<Predicate>(data.size());
         for (var d : data) {
-            var value = "%" + unaccent(d.toString()) + "%";
+            var value = "%" + escape(d.toString()) + "%";
             var predicate = cb.not(cb.like(expression, value));
             predicates.add(predicate);
         }
@@ -131,7 +131,7 @@ public interface DynamicPredicate<Y extends Comparable<? super Y>> {
         var expression = cb.lower(path.as(String.class));
         var predicates = new ArrayList<Predicate>(data.size());
         for (var d : data) {
-            var value = unaccent(d.toString());
+            var value = escape(d.toString());
             var predicate = cb.like(expression, value);
             predicates.add(predicate);
         }
@@ -146,7 +146,7 @@ public interface DynamicPredicate<Y extends Comparable<? super Y>> {
         var expression = cb.lower(path.as(String.class));
         var predicates = new ArrayList<Predicate>(data.size());
         for (var d : data) {
-            var value = unaccent(d.toString());
+            var value = escape(d.toString());
             var predicate = cb.not(cb.like(expression, value));
             predicates.add(predicate);
         }
@@ -205,20 +205,13 @@ public interface DynamicPredicate<Y extends Comparable<? super Y>> {
         return cb.or(predicates.toArray(new Predicate[0]));
     }
 
-    private static String unaccent(final String text) {
-        var normalizedText = Normalizer.normalize(text.toLowerCase(), Normalizer.Form.NFD);
-        var decomposed = new StringBuilder(normalizedText);
-        for (var i = 0; i < decomposed.length(); i++) {
-            if (decomposed.charAt(i) == '\u0141') {
-                decomposed.deleteCharAt(i);
-                decomposed.insert(i, '_');
-            } else if (decomposed.charAt(i) == '\u0142') {
-                decomposed.deleteCharAt(i);
-                decomposed.insert(i, '_');
-            }
-        }
-        var stripAccentsPattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-        return stripAccentsPattern.matcher(decomposed).replaceAll("_");
+    private static String escape(final String text) {
+        var decomposed = Normalizer.normalize(text, Normalizer.Form.NFKC);
+        var pattern = Pattern.compile("[^\\p{ASCII}]");
+        return pattern
+                .matcher(decomposed)
+                .replaceAll("_")
+                .toLowerCase();
     }
 
 }
