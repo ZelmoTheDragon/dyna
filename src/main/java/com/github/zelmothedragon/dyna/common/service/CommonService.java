@@ -32,7 +32,10 @@ public class CommonService {
         return dao.getAll(entityClass);
     }
 
-    public Optional<? extends Identifiable<?>> findById(final Class<? extends Identifiable<?>> entityClass, final Object id) {
+    public Optional<? extends Identifiable<?>> findById(
+            final Class<? extends Identifiable<?>> entityClass, 
+            final Object id) {
+        
         return dao.get(entityClass, id);
     }
 }

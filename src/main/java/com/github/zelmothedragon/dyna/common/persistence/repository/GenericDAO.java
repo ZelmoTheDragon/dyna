@@ -34,7 +34,9 @@ public class GenericDAO implements Serializable {
     public boolean contains(final Identifiable<?> entity) {
         boolean exists;
         Class<? extends Identifiable> entityClass = entity.getClass();
-        if (em.contains(entity)) {
+        if (Objects.isNull(entity.getId())) {
+            exists = false;
+        } else if (em.contains(entity)) {
             exists = true;
         } else {
             CriteriaBuilder cb = em.getCriteriaBuilder();

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    POUR TEST UNIQUEMENT
+    Servlet 4.0
+    
+    Fichier de configuration de Servlet.
+    Ce fichier même vide est requis pour le fonctionnement nominal
+    de cette technologie.
+    La configuration est réalisée par les annotations.
+    Mais certaines configurations nécessite d'être déclarées 
+    en XML dans ce fichier.
+-->
+<web-app 
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+    version="4.0">
+    
+    <!-- Durée de la session cliente par défaut (en minute). -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    
+    <!-- Page d'accueil par défaut. -->
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+            
+</web-app>

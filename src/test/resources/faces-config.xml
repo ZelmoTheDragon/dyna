@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+    POUR TEST UNIQUEMENT
+    JSF 2.3
+    
+    Fichier de configuration de JSF.
+    Ce fichier même vide est requis pour le fonctionnement nominal
+    de cette technologie.
+    La configuration est réalisée par les annotations.
+    Mais certaines configurations nécessite d'être déclarées 
+    en XML dans ce fichier.
+-->
+<faces-config 
+    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+    version="2.3">
+
+    
+</faces-config>
